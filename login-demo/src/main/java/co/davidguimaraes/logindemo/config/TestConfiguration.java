@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ExpressionConfig extends GlobalMethodSecurityConfiguration {
+public class TestConfiguration extends GlobalMethodSecurityConfiguration {
 
     @Override
     public MethodSecurityExpressionHandler createExpressionHandler() {
