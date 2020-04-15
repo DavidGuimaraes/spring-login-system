@@ -18,7 +18,6 @@ public class Usuario {
     @Id
     @GeneratedValue
     @Column(name = "id_usuario")
-    @NotNull
     private Long idUsuario;
 
     @Column(name = "nome")
