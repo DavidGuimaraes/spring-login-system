@@ -64,6 +64,13 @@ public class UsuarioResource {
 //        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.entityToDto(usuarioSalvo));
     }
 
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("isAuthenticated() and hasAuthority('ROLE_EDITAR_USUARIO') and #oauth2.hasScope('write')")
+    public ResponseEntity<UsuarioDto> editar(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
+        Usuario usuarioAtualizado = service.update(id, usuario);
+        return ResponseEntity.ok(mapper.entityToDto(usuarioAtualizado));
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("isAuthenticated() and hasAuthority('ROLE_REMOVER_USUARIO') and #oauth2.hasScope('write')")
