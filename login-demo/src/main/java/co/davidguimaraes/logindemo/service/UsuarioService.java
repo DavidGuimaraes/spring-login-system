@@ -3,6 +3,7 @@ package co.davidguimaraes.logindemo.service;
 import co.davidguimaraes.logindemo.model.Usuario;
 import co.davidguimaraes.logindemo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,12 +35,13 @@ public class UsuarioService {
         return usuario;
     }
 
-    public void delete(Long id) throws Exception{
-        Optional<Usuario> usuarioSalvo = this.dao.findById(id);
+    public void delete(Long id) /*throws DataIntegrityViolationException*/{
+        /*Optional<Usuario> usuarioSalvo = this.dao.findById(id);
         if(usuarioSalvo.isPresent()){
             this.dao.delete(usuarioSalvo.get());
         }else{
-            throw new Exception("Não foi encontrada um usuário com o id informado");
-        }
+            throw new DataIntegrityViolationException("");
+        }*/
+        this.dao.deleteById(id);
     }
 }

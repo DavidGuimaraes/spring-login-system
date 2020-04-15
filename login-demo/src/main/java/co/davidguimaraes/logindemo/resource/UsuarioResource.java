@@ -53,5 +53,5 @@ public class UsuarioResource {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("isAuthenticated() and hasAuthority('ROLE_REMOVER_USUARIO') and #oauth2.hasScope('write')")
-    public void remover(@PathVariable Long id)throws Exception { service.delete(id); }
+    public void remover(@PathVariable Long id) { service.delete(id); }
 }
